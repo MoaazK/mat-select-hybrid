@@ -1,0 +1,45 @@
+.select-hybrid-parent {
+  display: block !important;
+  float: left;
+  width: 100%;
+}
+
+.select-hybrid-parent button {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+}
+
+.select-hybrid-parent button + mat-checkbox {
+  padding: 0 !important;
+}
+
+.select-hybrid-parent button + span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 36px;
+  height: 36px;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  position: relative;
+  outline: 0;
+  display: flex;
+  flex-direction: row;
+  max-width: calc(100% - 40px);
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.select-hybrid-child {
+  display: block;
+  width: calc(100% - 48px);
+  float: left;
+  margin-left: 48px;
+  overflow-x: hidden;
+}
+
+.mat-icon-button .mat-icon, .mat-icon-button i {
+  padding-bottom: 4px;
+}

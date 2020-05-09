@@ -1,0 +1,64 @@
+<mat-form-field>
+  <mat-label [ngClass]="labelClass">{{label}}</mat-label>
+  <mat-select #matSelect
+    disableOptionCentering
+    [formControl]="selectControl"
+    [required]="isRequired"
+    [multiple]="isMultiple"
+    (selectionChange)="selectionChange.emit($event)">
+
+    <mat-select-search
+      [formControl]="filterControl"
+      [selectControl]="selectControl"
+      placeholderLabel="Search {{label}}"
+      noEntriesFoundLabel="No {{label || 'Options'}} Found">
+    </mat-select-search>
+
+    <!-- Select All -->
+    <mat-select-check *ngIf="isMultiple"
+      class="select-hybrid-parent"
+      [selectControl]="selectControl"
+      [values]="filteredData"
+      [dataKey]="dataKey"
+      [isMultiple]="isMultiple">
+    </mat-select-check>
+
+    <!-- None option for single select -->
+    <mat-option *ngIf="!isMultiple && !isRequired && hasNone" selected>None</mat-option>
+
+    <ng-container [ngSwitch]="!!groupKey">
+
+      <!-- For group data, create groups -->
+      <ng-container *ngSwitchCase="true">
+        <ng-container *ngFor="let group of groupData">
+          <mat-select-check
+            class="select-hybrid-parent"
+            [selectControl]="selectControl"
+            [isGroup]="true"
+            [values]="group.value"
+            [text]="group.key"
+            [groupData]="groupData"
+            [dataKey]="dataKey"
+            [isMultiple]="isMultiple">
+          </mat-select-check>
+
+          <span class="select-hybrid-child" [ngStyle]="{'display': group.isVisible ? 'block' : 'none'}">
+            <mat-option *ngFor="let item of group.value" [value]="item[dataKey]">
+              {{item[dataDisplayValue]}}
+            </mat-option>
+          </span>
+        </ng-container>
+      </ng-container>
+
+      <!-- no group options -->
+      <ng-container *ngSwitchDefault>
+        <mat-option *ngFor="let item of filteredData" [value]="item[dataKey]">
+          {{item[dataDisplayValue]}}
+        </mat-option>
+      </ng-container>
+
+    </ng-container>
+
+  </mat-select>
+  <mat-error *ngIf="selectControl.hasError('required')">{{label || 'Field'}} is required.</mat-error>
+</mat-form-field>
