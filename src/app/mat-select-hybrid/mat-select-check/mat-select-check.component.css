@@ -1,0 +1,16 @@
+app-select-check-all .mat-checkbox-layout,
+app-select-check-all .mat-checkbox-label {
+  width: 100% !important;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: rgba(255, 255, 255);
+}
+
+.mat-option:focus:not(.mat-option-disabled) {
+  background: rgba(255, 255, 255);
+}
+
+.mat-option:hover:not(.mat-option-disabled) {
+  background: rgba(0, 0, 0, .04) !important;
+}
