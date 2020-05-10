@@ -6,8 +6,8 @@
 
 .select-hybrid-parent button {
   float: left;
-  height: 36px;
-  line-height: 36px;
+  height: 40px;
+  line-height: 40px;
 }
 
 .select-hybrid-parent button + mat-checkbox {
@@ -18,8 +18,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 36px;
-  height: 36px;
+  line-height: 42px;
+  height: 42px;
   padding: 0;
   text-align: left;
   text-decoration: none;
@@ -38,8 +38,4 @@
   float: left;
   margin-left: 48px;
   overflow-x: hidden;
-}
-
-.mat-icon-button .mat-icon, .mat-icon-button i {
-  padding-bottom: 4px;
 }
