@@ -15,8 +15,11 @@ interface Territory {
 export class AppComponent implements OnInit {
   version = VERSION;
   exampleForm: FormGroup;
+  options: Array<Territory>;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+    this.options = this.getOptions();
+  }
 
   ngOnInit() {
     this.initFormGroup();
